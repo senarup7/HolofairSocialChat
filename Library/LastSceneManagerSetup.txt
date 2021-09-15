@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/HolofairChat/Scenes/Holofair_SocialChat.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
