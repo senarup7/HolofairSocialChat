@@ -16,9 +16,13 @@ public class Chat_UIManager : MonoBehaviour
 
     public List<friends_details> _friends_details = new List<friends_details>();
 
+
+    // This Section Use for Further integration with Database
+    #region
     public  int Sender_ID = 1111;
     public int Receiver_ID   { get; private set; }
 
+#endregion
     [SerializeField]
     Transform friends_prefab;
   
@@ -45,10 +49,9 @@ public class Chat_UIManager : MonoBehaviour
     #region
     [SerializeField]
     Text userName;
-    [SerializeField]
-    Text receipentName;
-    [SerializeField]
-    InputField inputTextMessage;
+    // Not in use, use for database
+   // [SerializeField]
+    //InputField inputTextMessage;
 
     // Buddy
     // Bubby list panel components
@@ -120,6 +123,12 @@ public class Chat_UIManager : MonoBehaviour
             
 
             string buddyName = buddy.Name; // Required or the listeners will always receive the last buddy name
+
+            // Close All Chat Panel
+            OnCloseChatPanelClick(buddyName);
+
+
+
             _friends_details.Clear();
 
             _friends_details.Add(new friends_details());
@@ -156,10 +165,38 @@ public class Chat_UIManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// ChatPanel Open
+    /// </summary>
+    /// <param name="buddyName"></param>
+    void OnOpenChatPanelClick(string buddyName)
+    {
+        // Get panel
+        Transform panel = ChatContainer.Find(buddyName);
+
+        if (panel != null)
+        {
+            panel.transform.gameObject.SetActive(true);
+        }
+    }
+    /// <summary>
+    /// ChatPanelClose
+    /// </summary>
+    /// <param name="buddyName"></param>
+    void OnCloseChatPanelClick(string buddyName)
+    {
+        // Get panel
+        Transform panel = ChatContainer.Find(buddyName);
+
+        if (panel != null)
+        {
+            panel.transform.gameObject.SetActive(false);
+        }
+    }
     /**
 	 * Sends a chat message to a buddy when SEND button is pressed.
 	 */
-    public void OnSendMessageButtonClick(string buddyName)
+    void OnSendMessageButtonClick(string buddyName)
     {
         // Get panel
         Transform panel = ChatContainer.Find(buddyName);
@@ -189,8 +226,9 @@ public class Chat_UIManager : MonoBehaviour
     }
     /// <summary>
     /// Chat Message Send
+    /// Use while message save into databasde
     /// </summary>
-    public void OnSendChatMessage()
+  /*  public void OnSendChatMessage()
     {
         int tempChatID=-1;
         bool isChatIDExists = false;
@@ -228,7 +266,7 @@ public class Chat_UIManager : MonoBehaviour
                 {
                     Debug.Log("..........." );
                     // User already have chat on that day
-                    // Add Onlu Message here
+                    // Add Only Message here
                     AddMessage();
                 }
                 else
@@ -282,7 +320,7 @@ public class Chat_UIManager : MonoBehaviour
         userMessages._chatMessage[userMessages._chatMessage.Count - 1].chat_id = userMessages._chatMessage.Count;
         userMessages._chatMessage[userMessages._chatMessage.Count - 1].chat_date = System.DateTime.Now.ToString("MMMM dd yyyy");
         AddMessage();
-    }
+    }*/
 
         /**
          * Initializes interface when buddy list data is received.
@@ -292,8 +330,8 @@ public class Chat_UIManager : MonoBehaviour
         // Populate list of buddies
         OnBuddyListUpdate(evt);
         // Nick
-       // userName.text = (ConnectionManager.sfsServer.BuddyManager.MyNickName != null ? ConnectionManager.sfsServer.BuddyManager.MyNickName : "");
-       // userName.text = (ConnectionManager.sfsServer.MySelf.Name.ToString());
+        userName.text = (ConnectionManager.sfsServer.BuddyManager.MyNickName != null ? ConnectionManager.sfsServer.BuddyManager.MyNickName : "");
+       
 
 
     }
@@ -333,6 +371,8 @@ public class Chat_UIManager : MonoBehaviour
 
     /*
      * Clear All Buddy List
+     * If Required to clear all buddylist
+     * Interface UI not created 
      */
     public void ClearAllBuddyList()
     {
@@ -405,12 +445,10 @@ public class Chat_UIManager : MonoBehaviour
             friendsUI.userName.text = (buddy.NickName != null && buddy.NickName != "") ? buddy.NickName : buddy.Name;
             if (!buddy.IsOnline)
             {
-                // buddylistItem.stateIcon.sprite = IconOffline;
+               
                 friendsUI.GetComponent<Button>().interactable = false;
                 friendsUI.userStatus.text = "Offline";
-                friendsUI.notification.GetComponent<Image>().color = new Color32(233, 0, 0, 0);
-
-                ColorOffile(friendsUI.notification.GetComponent<Image>());
+              
             }
             else
             {
@@ -419,26 +457,26 @@ public class Chat_UIManager : MonoBehaviour
                 if (state == "Available")
                 {
                     friendsUI.userStatus.text = "Available";
-                    friendsUI.notification.GetComponent<Image>().color = new Color32(52, 241, 0, 0);;
+                  //  friendsUI.notification.GetComponent<Image>().color = new Color32(52, 241, 0, 0);;
                 }
                 else if (state == "Away") { 
                     friendsUI.userStatus.text = "Away";
-                    friendsUI.notification.GetComponent<Image>().color = new Color(243, 205, 0, 0); ;
+                   // friendsUI.notification.GetComponent<Image>().color = new Color(243, 205, 0, 0); ;
                 }
                 else if (state == "Occupied")
                 {
                     friendsUI.userStatus.text = "Occupied";
-                    friendsUI.notification.GetComponent<Image>().color = new Color32(0, 145, 190, 0);;
+                   // friendsUI.notification.GetComponent<Image>().color = new Color32(0, 145, 190, 0);;
                 }
 
             }
             // Buttons
             string buddyName = buddy.Name; // Required or the listeners will always receive the last buddy name
 
-            //friendsUI.removeButton.onClick.AddListener(() => OnRemoveBuddyButtonClick(buddyName));
-           // buddylistItem.blockButton.onClick.AddListener(() => OnBlockBuddyButtonClick(buddyName));
-             friendsUI.GetComponent<Button>().onClick.AddListener(() => OnChatBuddyButtonClick(buddyName));
-
+            friendsUI.removeButton.onClick.AddListener(() => OnRemoveBuddyButtonClick(buddyName));
+            //friendsUI.blockButton.onClick.AddListener(() => OnBlockBuddyButtonClick(buddyName));
+            friendsUI.GetComponent<Button>().onClick.AddListener(() => OnChatBuddyButtonClick(buddyName));
+            
 
             // Add item to list
             newListItem.transform.SetParent(buddyListContent, false);
@@ -449,7 +487,7 @@ public class Chat_UIManager : MonoBehaviour
             _friends_details[_friends_details.Count-1].user_id = buddy.Id;
             _friends_details[_friends_details.Count - 1].user_name = buddyName;
             _friends_details[_friends_details.Count - 1].user_Status = buddy.State;
-
+            
             // Also update chat panel if open
             Transform panel = ChatContainer.Find(buddyName);
 
@@ -457,10 +495,21 @@ public class Chat_UIManager : MonoBehaviour
             {
                 ChatPanel chatPanel = panel.GetComponent<ChatPanel>();
                 chatPanel.buddy = buddy;
+                chatPanel.closeButton.onClick.AddListener(() => OnCloseChatPanelClick(buddyName));
             }
 
         }
     }
+
+
+    /**
+ * Removes a user from the buddy list.
+ */
+    public void OnRemoveBuddyButtonClick(string buddyName)
+    {
+        ConnectionManager.sfsServer.Send(new Sfs2X.Requests.Buddylist.RemoveBuddyRequest(buddyName));
+    }
+
 
     /**
 	 * Start a chat with a buddy.
@@ -471,6 +520,8 @@ public class Chat_UIManager : MonoBehaviour
         Debug.Log("Buddy Chat Clicked " + buddyName);
         // Check if panel is already open; if yes bring it to front
         Transform panel = ChatContainer.Find(buddyName);
+
+
 
         if (panel == null)
         {
@@ -494,6 +545,7 @@ public class Chat_UIManager : MonoBehaviour
         }
         else
         {
+            OnOpenChatPanelClick(buddyName);
             panel.SetAsLastSibling();
         }
     }

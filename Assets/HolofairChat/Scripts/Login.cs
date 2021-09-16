@@ -30,8 +30,11 @@ public class Login : MonoBehaviour
 	[Tooltip("WebSocket port listened by the SmartFoxServer 2X instance; used for in WebGL build only")]
 	public int WSPort = 8080;
 
+	[Tooltip("UDP port listened by the SmartFoxServer 2X instance")]
+	public int UDPPort = 9932;
+
 	[Tooltip("Name of the SmartFoxServer 2X Zone to join")]
-	public string Zone = "BasicExamples";
+	public string Zone = "main";
 
 	[Tooltip("Name of the Room")]
 	public string roomName = "GameRoom";
@@ -90,6 +93,7 @@ public class Login : MonoBehaviour
 
 	public void OnLoginButtonClick()
 	{
+		Debug.Log("Login");
 		ConnectionManager.UserName = nameInput.text;
 		ConnectionManager.LogInToZone(zoneInput.text);
 		//ConnectionManager.LogInToRoom(roomName);

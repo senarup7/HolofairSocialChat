@@ -9,8 +9,11 @@ public class ChatPanel : MonoBehaviour {
 	public Button closeButton;
 
 	public ScrollRect scrollRect;
+	public Image ChatBGImage;
+	public Transform content;
 	public Text chatText;
 	public Button sendButton;
+
 	public InputField messageInput;
 	public Text title;
 
@@ -44,8 +47,8 @@ public class ChatPanel : MonoBehaviour {
 				{
 					if (!buddy.IsOnline) {
 						stateIcon.sprite = IconOffline;
-						messageInput.interactable = false;
-						sendButton.interactable = false;
+						//messageInput.interactable = false;
+						//sendButton.interactable = false;
 					}
 					else {
 						string state = buddy.State;
@@ -70,14 +73,20 @@ public class ChatPanel : MonoBehaviour {
 	}
 
 	public void addMessage(string message,bool isItMe) {
-        switch (isItMe)
-        {
+        
+		chatText.text += message + "\n";
+
+		/*switch (isItMe)
+		{
 			case true:
+				chatText.alignment = TextAnchor.UpperRight;
+				
 				break;
 			case false:
+				chatText.alignment = TextAnchor.UpperLeft;
 				break;
-        }
-		chatText.text += message + "\n";
+		}*/
+
 		Debug.Log("Message Added");
 		Canvas.ForceUpdateCanvases();
 

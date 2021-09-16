@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -113,10 +113,10 @@ MonoBehaviour:
     y: 30
     width: 1521
     height: 717
-  m_MinSize: {x: 706, y: 492}
-  m_MaxSize: {x: 18001, y: 14042}
+  m_MinSize: {x: 708, y: 492}
+  m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 34
+  controlID: 124
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 65
+  controlID: 34
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -241,8 +241,8 @@ MonoBehaviour:
     y: 0
     width: 389
     height: 717
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -377,9 +377,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 356.9352, y: 208.57285, z: -0.17883301}
+    m_Target: {x: 390.3376, y: 206.8969, z: 0.061187744}
     speed: 2
-    m_Value: {x: 356.9352, y: 208.57285, z: -0.17883301}
+    m_Value: {x: 390.3376, y: 206.8969, z: 0.061187744}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -429,9 +429,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 303.1204
+    m_Target: 235.21628
     speed: 2
-    m_Value: 303.1204
+    m_Value: 235.21628
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -521,20 +521,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/HolofairChat/Prefabs
+    - Assets/HolofairChat/Scenes
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/HolofairChat/Prefabs
+  - Assets/HolofairChat/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: F:\Outreal\HolofairSocialChat\HolofairSocialChat
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 18410000
-    m_LastClickedID: 16664
-    m_ExpandedIDs: 00000000064100000841000000ca9a3b
+    m_SelectedIDs: 88370000
+    m_LastClickedID: 14216
+    m_ExpandedIDs: 000000007c3700007e37000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -562,7 +562,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 000000007c3700007e370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000000000005c960000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -647,23 +647,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a0a7ffff
-      m_LastClickedID: -22624
-      m_ExpandedIDs: 26b8ffff16d1ffff32d1ffffc4d1ffff82d3ffff9ed3ffff30d4ffffd6d8fffff2d8fffff4d8ffff32d9ffff4ed9ffff50d9ffff6adaffff86daffff88daffff60deffff7cdeffff0edfffff5ee2ffff7ae2ffff7ce2ffff1ae5ffff36e5ffffc8e5fffface7ffffc8e7ffff5ce8ffffb4ebfffff8ecffff3a480000c6480000044a000068520000da520000f2520000305400004c5a0000d65a000018630000a26300008a640000e0640000aa690000346a0000726b0000ce760000587700004878000096780000c4890000368a00004e8a00003e8b00006e8b00008c8b0000948b00009e8b0000
+      m_SelectedIDs: 583800005a380000
+      m_LastClickedID: 0
+      m_ExpandedIDs: e87dfeff047efeff947efeff1481feff3081feffc081feff8493feff9293feff5c96feff6a96feff7696feff5ea0feff7aa0feff0aa1feff2ca7feff48a7feffd8a7feff60adfeff7cadfeff7eadfeffc0adfeffdcadfeff6caefeffb4affeffd0affeff60b0feff1cb9feff9cd8feffb8d8feffbad8feff14d9feff30d9feff32d9feff88d9feffa4d9feffa6d9feff08dafeff24dafeffb4dafeffdcdbfeff3ce0feff58e0feffe8e0feff8ee7feffaae7feff3ae8feff5aecfeff76ecfeff06edfeff26f3feff42f3feffd2f3feff58f5feff74f5feff04f6feff2604ffff4204ffffd204ffffee20ffff2829ffff4429ffff4629ffffa829ffffc429ffff542affff0832ffff163effff1440ffff3040ffffc040ffffce45ffffea45ffff7a46ffffbe4bffffda4bffff6a4cfffff651fffffe51ffff6852ffff7252ffff7852ffff2a55ffff4655ffff4855ffff8a55ffffa655ffff3656ffff3a5fffff565fffff585fffff965fffffb25fffff4260ffff2a62ffff4a69ffff2a6fffff2c70ffff4870ffff4a70ffff9070ffffac70ffff3c71ffff1a7bffff367bffff387bffffaa7effff288affff448affffd48affffbc8dffff2693ffff4293ffffd493ffff7c98ffffb698ffff6c9fffff889fffff1aa0ffff0aaeffff56bbffff60bbffff22bdffff3ebdffff40bdffffa6bdffffc2bdffff54beffffd2c3ffffdcc3ffff10c4ffff02c5ffff1ec5ffff20c5ffff8cc5ffffa8c5ffff3ac6ffffc0caffffdccaffff6ecbffff04d0ffff0cd1ffff28d1ffffbad1ffff76deffff92deffff24dfffffcce4ffffe8e4ffffeae4ffff3ce5ffff58e5ffffeae5ffff16eaffff32eaffff34eaffffeceaffff08ebffff9aebffff4af1ffff66f1fffff8f1ffff68fbfffff4ffffff003400005a34000062340000b034000030350000ea350000d4410000fe4100002c4200003e4200004642000088420000a44200003e430000f843000014440000464f0000b84f0000b050000034560000a6560000045700009e57000058580000226c0000946c00008c6d0000466e0000127700008477000074780000ee7800004c8b0000a48b0000be8b0000c68b00004c8c0000ae8c00006e8d0000708d000072970000e4970000d49800009699000096a8000008a9000046a90000f8a90000baaa0000d8aa0000a8b9000000ba00001aba000022ba000058ba0000a8ba00007cbb000082bb000078d10000ead1000028d2000052d300006cd30000d8df00005ee0000066e000000ce1000084e10000d6e9000048ea0000aaeb000048f40000baf400008cf5000076f600008c090100f6090100fe0901003c0a0100b60b010012220100842201001437010086370100c43701001e380100fc3801000a39010030410100a24101003a4201004c4b0100be4b0100b24c0100c054010032550100705501009c560100a8560100b65601009466010006670100446701009e6701007268010024720100967201002e7301003a940100ac94010044950100c2a0010034a1010056aa0100c8aa010060ab010058ac010066ac010086b60100f8b6010036b701006ad701009ed70100c2d70100dcd70100e4d701006ad801009cd80100acd80100d4d8010032d90100b2d9010056e3010068e401003a0f02009c0f02003a1002004c100200e8100200ec100200fa100200fc100200821102009e210200b0220200602f0200a62f0200b02f0200ba2f0200c22f02004030020060300200723002007a300200a2300200b230020022310200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Number
+        m_OriginalName: Number
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 121028
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
