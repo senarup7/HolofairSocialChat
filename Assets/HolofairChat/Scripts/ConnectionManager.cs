@@ -1,4 +1,5 @@
 
+
 using Sfs2X;
 using Sfs2X.Core;
 using Sfs2X.Entities;
@@ -234,7 +235,7 @@ using UnityEngine;
             if (ConnectedToZone != null)
                 ConnectedToZone(); //ChangeServerInfo(user.Id, user.Name);
             // Chat Panel On
-            FindObjectOfType<ChatManager>().SetChatPanelOn();
+            
             FindObjectOfType<Chat_UIManager>().InitSFXConnection(user.Name);
     }
 

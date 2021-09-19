@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ * Class ChatManager.cs
+ * Login Panel, Chat Panes On /Off
+ * 
+ * (c) OutRealXR
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

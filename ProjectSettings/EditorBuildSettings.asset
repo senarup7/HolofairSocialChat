@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/HolofairChat/Scenes/Holofair_SocialChat.unity
+  - enabled: 0
+    path: Packages/com.outreal.socialchat/Test/Scenes/Holofair_SocialChat.unity
     guid: a9a07635d73ae2d4e87d9ce0277eccae
   m_configObjects: {}

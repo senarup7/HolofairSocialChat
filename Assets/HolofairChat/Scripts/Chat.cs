@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Chat : MonoBehaviour
 {
-    public Image avatarImage;
+   // public Image avatarImage;
     public Text chatText;
     
 }

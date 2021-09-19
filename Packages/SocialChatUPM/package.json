@@ -1,0 +1,26 @@
+{
+  "name": "com.outreal.socialchat",
+  "version": "1.0.0",
+  "displayName": "Social Chat",
+  "description": "Holofair Social Chat",
+  "unity": "2020.3",
+  "unityRelease": "",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "dependencies": {
+    
+    },
+ "keywords": [
+    "Social Chat",
+    "chat",
+    "extension",
+    "tools",
+    "holofair chat"
+  ],
+  "author": {
+    "name": "Arup Kr. Sen",
+    "email": "senarup7@gmail.com",
+    "url": ""
+  }
+}

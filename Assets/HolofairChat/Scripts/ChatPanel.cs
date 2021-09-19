@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿
+/*
+ * Class ChatPanel.cs
+ * Use for Chat Friends/Buddies datas provide by SFS 
+ * User Data for user ui & interfaces
+ * User Status, Send Message, User Input Message
+ * Use it for future history chat
+ * (c) OutRealXR
+ */
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using Sfs2X.Entities;
@@ -9,9 +19,10 @@ public class ChatPanel : MonoBehaviour {
 	public Button closeButton;
 
 	public ScrollRect scrollRect;
-	public Image ChatBGImage;
+	//public Image ChatBGImage;
 	public Transform content;
-	public Text chatText;
+	public Transform leftChatMessage;
+	public Transform rightChatMessage;
 	public Button sendButton;
 
 	public InputField messageInput;
@@ -73,19 +84,24 @@ public class ChatPanel : MonoBehaviour {
 	}
 
 	public void addMessage(string message,bool isItMe) {
-        
-		chatText.text += message + "\n";
 
-		/*switch (isItMe)
+		//chatText.text += message + "\n";
+		Transform t;
+		switch (isItMe)
 		{
 			case true:
-				chatText.alignment = TextAnchor.UpperRight;
+				t = Instantiate(rightChatMessage, content.transform);
+				t.transform.SetParent(content,false);
+				t.GetComponent<Chat>().chatText.text = message;
 				
 				break;
 			case false:
-				chatText.alignment = TextAnchor.UpperLeft;
+				t = Instantiate(leftChatMessage, content.transform);
+				
+				t.transform.SetParent(content,false);
+				t.GetComponent<Chat>().chatText.text = message;
 				break;
-		}*/
+		}
 
 		Debug.Log("Message Added");
 		Canvas.ForceUpdateCanvases();

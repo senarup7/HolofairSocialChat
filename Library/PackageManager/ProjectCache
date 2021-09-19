@@ -13,10 +13,18 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637676233776176341
-    m_Hash: 190209669
+      ticks: 637676367601931303
+    m_Hash: 3539547212
 m_EmbeddedPackageManifests:
-  m_ManifestsStatus: {}
+  m_ManifestsStatus:
+    F:/Outreal/Holofair_Social_Chat/Packages/SocialChatUPM/package.json:
+      m_FilePath: F:/Outreal/Holofair_Social_Chat/Packages/SocialChatUPM/package.json
+      m_PathExists: 1
+      m_ContentTrackingEnabled: 1
+      m_ModificationDate:
+        serializedVersion: 2
+        ticks: 637676367573575705
+      m_Hash: 1123985184
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
@@ -2475,6 +2483,56 @@ m_PackageAssets:
       - name: com.unity.modules.subsystems
         version: 1.0.0
       keywords: []
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 0
+      repository:
+        type: 
+        url: 
+        revision: 
+        path: 
+    - packageId: com.outreal.socialchat@file:F:\Outreal\Holofair_Social_Chat\Packages\SocialChatUPM
+      testable: 1
+      isDirectDependency: 1
+      version: 1.0.0
+      source: 3
+      resolvedPath: F:\Outreal\Holofair_Social_Chat\Packages\SocialChatUPM
+      assetPath: Packages/com.outreal.socialchat
+      name: com.outreal.socialchat
+      displayName: Social Chat
+      author:
+        name: Arup Kr. Sen
+        email: senarup7@gmail.com
+        url: 
+      category: 
+      type: 
+      description: Holofair Social Chat
+      status: 4
+      errors: []
+      versions:
+        all: []
+        compatible: []
+        verified: 
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - Social Chat
+      - chat
+      - extension
+      - tools
+      - holofair chat
       registry:
         id: 
         name: 

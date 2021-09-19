@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ * Class UserMessage.cs
+ * Use for Chat Messages data receiving from server & storing client side
+ * Use it for future history chat
+ * (c) OutRealXR
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

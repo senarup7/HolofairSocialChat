@@ -34,10 +34,10 @@ public class Chat_UIManager : MonoBehaviour
 
 
     [SerializeField]
-    Transform friends_prefab;
+    GameObject friends_prefab;
   
-    [SerializeField]
-    Transform content;
+   // [SerializeField]
+   // Transform content;
 
 
     // Chat  Message Panel
@@ -85,9 +85,10 @@ public class Chat_UIManager : MonoBehaviour
     #endregion
     private void Awake()
     {
+        /*
         users_Chat = FindObjectOfType<Users_Chat>();
         userMessages = FindObjectOfType<UserMessages>();
-        
+        */
     }
 
     //----------------------------------------------------------
@@ -108,7 +109,14 @@ public class Chat_UIManager : MonoBehaviour
 
             ConnectionManager.sfsServer.Send(new Sfs2X.Requests.Buddylist.InitBuddyListRequest());
 
+            // Set Chat Panel On
+            FindObjectOfType<ChatManager>().SetChatPanelOn();
+
+            // User Name for Chat top view
             userName.text = user;
+        } else
+        {
+            return;
         }
 
         // Add event listeners
@@ -133,6 +141,13 @@ public class Chat_UIManager : MonoBehaviour
     /// </summary>
     private void initBuddyList()
     {
+        // Remove current list content
+        for (int i = buddyListContent.childCount - 1; i >= 0; --i)
+        {
+            GameObject.Destroy(buddyListContent.GetChild(i).gameObject);
+        }
+        buddyListContent.DetachChildren();
+
 
         // Generate Buddy List
 
@@ -143,30 +158,17 @@ public class Chat_UIManager : MonoBehaviour
             string buddyName = buddy.Name; // Required or the listeners will always receive the last buddy name
 
             // Close All Chat Panel
+            
+            GameObject t = Instantiate(friends_prefab);
+            t.transform.SetParent(buddyListContent);
+            t.GetComponent<ChatFriends_UI>().userName.text = buddyName;
+            t.GetComponent<ChatFriends_UI>().userStatus.text = buddy.State;
             OnCloseChatPanelClick(buddyName);
 
-
-
-            _friends_details.Clear();
-
-            _friends_details.Add(new friends_details());
-            _friends_details[_friends_details.Count - 1].user_id = buddy.Id;
-            _friends_details[_friends_details.Count - 1].user_name = buddyName;
-            _friends_details[_friends_details.Count - 1].user_Status = buddy.State;
         }
+       
 
-        // Panel Friends UI Generate
-         for (int i=0; i < _friends_details.Count; i++)
-           {
-            int temp = i;
-            Transform t = Instantiate(friends_prefab);
-            t.SetParent(content);
-            t.GetComponent<ChatFriends_UI>().userName.text = _friends_details[i].user_name;
-            t.GetComponent<ChatFriends_UI>().userStatus.text = _friends_details[i].user_Status;
-            t.GetComponent<ChatFriends_UI>().chatDate.text = _friends_details[i].date;
-           // t.GetComponent<ChatFriends_UI>().notification.text = _friends_details[i].onlineStatus.ToString();
- 
-        }
+
     }
     /// <summary>
     /// OPen Chat Panel On click User
@@ -366,7 +368,7 @@ public class Chat_UIManager : MonoBehaviour
         }
         ConnectionManager.sfsServer.Send(new Sfs2X.Requests.Buddylist.AddBuddyRequest(buddyInput.text.ToString()));
         
-        StartCoroutine(SendRequest());
+        //StartCoroutine(SendRequest());
 
     }
 
@@ -382,7 +384,7 @@ public class Chat_UIManager : MonoBehaviour
 
         Buddy buddy = ConnectionManager.sfsServer.BuddyManager.GetBuddyByName(buddyInput.text);
 
-        ConnectionManager.sfsServer.Send(new Sfs2X.Requests.Buddylist.BuddyMessageRequest("HI", buddy, _params));
+        ConnectionManager.sfsServer.Send(new Sfs2X.Requests.Buddylist.BuddyMessageRequest("", buddy, _params));
 
 
     }
@@ -443,7 +445,7 @@ public class Chat_UIManager : MonoBehaviour
     {
 
 
-        Debug.Log("Buddy List Update");
+       // Debug.Log("Buddy List Update");
         // Remove current list content
         for (int i = buddyListContent.childCount - 1; i >= 0; --i)
         {
@@ -454,17 +456,26 @@ public class Chat_UIManager : MonoBehaviour
         // Recreate list content
         foreach (Buddy buddy in ConnectionManager.sfsServer.BuddyManager.BuddyList)
         {
-            Debug.Log("Buddy Name "+ buddy.Name);
-            GameObject newListItem = Instantiate(buddyListItemPrefab) as GameObject;
-
+            //Debug.Log("Buddy Name "+ buddy.Name);
+            GameObject newListItem = Instantiate(friends_prefab);
+            newListItem.transform.SetParent(buddyListContent, false);
             ChatFriends_UI friendsUI = newListItem.GetComponent<ChatFriends_UI>();
+            // Icon
+            if (buddy.IsBlocked)
+            {
+                friendsUI.FriendsSelectButton.interactable = false;
+                friendsUI.blockButton.transform.GetComponent<Image>().sprite = friendsUI.stateBlock; 
+            }
+            else
+            {
+                friendsUI.FriendsSelectButton.interactable = true;
+                friendsUI.blockButton.transform.GetComponent<Image>().sprite = friendsUI.stateUnBlock; 
 
-            // Nickname
-            friendsUI.userName.text = (buddy.NickName != null && buddy.NickName != "") ? buddy.NickName : buddy.Name;
+            }
             if (!buddy.IsOnline)
             {
                
-                friendsUI.GetComponent<Button>().interactable = false;
+                friendsUI.FriendsSelectButton.GetComponent<Button>().interactable = false;
                 friendsUI.userStatus.text = "Offline";
               
             }
@@ -475,37 +486,30 @@ public class Chat_UIManager : MonoBehaviour
                 if (state == "Available")
                 {
                     friendsUI.userStatus.text = "Available";
-                  //  friendsUI.notification.GetComponent<Image>().color = new Color32(52, 241, 0, 0);;
+                 
                 }
                 else if (state == "Away") { 
                     friendsUI.userStatus.text = "Away";
-                   // friendsUI.notification.GetComponent<Image>().color = new Color(243, 205, 0, 0); ;
+                   
                 }
                 else if (state == "Occupied")
                 {
                     friendsUI.userStatus.text = "Occupied";
-                   // friendsUI.notification.GetComponent<Image>().color = new Color32(0, 145, 190, 0);;
+                  
                 }
 
             }
             // Buttons
             string buddyName = buddy.Name; // Required or the listeners will always receive the last buddy name
-
+            friendsUI.GetComponent<ChatFriends_UI>().userName.text = buddyName;
             friendsUI.removeButton.onClick.AddListener(() => OnRemoveBuddyButtonClick(buddyName));
-            //friendsUI.blockButton.onClick.AddListener(() => OnBlockBuddyButtonClick(buddyName));
-            friendsUI.GetComponent<Button>().onClick.AddListener(() => OnChatBuddyButtonClick(buddyName));
+            friendsUI.blockButton.onClick.AddListener(() => OnBlockBuddyButtonClick(buddyName));
+            friendsUI.FriendsSelectButton.GetComponent<Button>().onClick.AddListener(() => OnChatBuddyButtonClick(buddyName));
             
 
             // Add item to list
             newListItem.transform.SetParent(buddyListContent, false);
 
-            _friends_details.Clear();
-
-            _friends_details.Add(new friends_details());
-            _friends_details[_friends_details.Count-1].user_id = buddy.Id;
-            _friends_details[_friends_details.Count - 1].user_name = buddyName;
-            _friends_details[_friends_details.Count - 1].user_Status = buddy.State;
-            
             // Also update chat panel if open
             Transform panel = ChatContainer.Find(buddyName);
 
@@ -519,7 +523,15 @@ public class Chat_UIManager : MonoBehaviour
         }
     }
 
+    /**
+ * Blocks/unblocks a buddy.
+ */
+    public void OnBlockBuddyButtonClick(string buddyName)
+    {
+        bool isBlocked = ConnectionManager.sfsServer.BuddyManager.GetBuddyByName(buddyName).IsBlocked;
 
+        ConnectionManager.sfsServer.Send(new Sfs2X.Requests.Buddylist.BlockBuddyRequest(buddyName, !isBlocked));
+    }
     /**
  * Removes a user from the buddy list.
  */
