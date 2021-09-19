@@ -235,8 +235,7 @@ using UnityEngine;
                 ConnectedToZone(); //ChangeServerInfo(user.Id, user.Name);
             // Chat Panel On
             FindObjectOfType<ChatManager>().SetChatPanelOn();
-            FindObjectOfType<Chat_UIManager>().Sender_ID=user.Id;
-            FindObjectOfType<Chat_UIManager>().InitSFXConnection();
+            FindObjectOfType<Chat_UIManager>().InitSFXConnection(user.Name);
     }
 
         /// <summary>

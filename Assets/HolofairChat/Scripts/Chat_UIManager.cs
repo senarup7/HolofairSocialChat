@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * Chat UI Manager
+ * All Chat UI & Implemenation
+ * (c) OutRealXR
+ * 19-09-2006
+ */
+
+
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
@@ -19,10 +27,12 @@ public class Chat_UIManager : MonoBehaviour
 
     // This Section Use for Further integration with Database
     #region
-    public  int Sender_ID = 1111;
-    public int Receiver_ID   { get; private set; }
+   /* public  int Sender_ID = 1111;
+    public int Receiver_ID   { get; private set; */
+    #endregion
 
-#endregion
+
+
     [SerializeField]
     Transform friends_prefab;
   
@@ -84,13 +94,21 @@ public class Chat_UIManager : MonoBehaviour
     // Public methods for UI
     //----------------------------------------------------------
 
-    public void InitSFXConnection()
+
+    /// <summary>
+    /// Initialize SFS Connection 
+    /// Set User Name
+    /// </summary>
+    /// <param name="user"></param>
+    public void InitSFXConnection(string user)
     {
 
         if (ConnectionManager.IsInitialized)
         {
 
             ConnectionManager.sfsServer.Send(new Sfs2X.Requests.Buddylist.InitBuddyListRequest());
+
+            userName.text = user;
         }
 
         // Add event listeners
@@ -330,7 +348,7 @@ public class Chat_UIManager : MonoBehaviour
         // Populate list of buddies
         OnBuddyListUpdate(evt);
         // Nick
-        userName.text = (ConnectionManager.sfsServer.BuddyManager.MyNickName != null ? ConnectionManager.sfsServer.BuddyManager.MyNickName : "");
+      //  userName.text = (ConnectionManager.sfsServer.BuddyManager.MyNickName != null ? ConnectionManager.sfsServer.BuddyManager.MyNickName : "");
        
 
 
